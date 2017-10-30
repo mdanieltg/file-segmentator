@@ -4,17 +4,28 @@
 
 using namespace std;
 
+/*
+ * Syntax
+ *   Segmentator input_file
+ *   Segmentator input_file lines_long_per_file
+ *
+ */
 int main(int argc, const char* argv[])
 {
-    int i;
+    int i, linesLong = 90000;
     char name[10];
     string outputFile, line, filename;
     ifstream sReader;
     ofstream sWriter;
 
     // Getting file to read
-    if (argc > 1)
+    if (argc == 1)
         outputFile.assign(argv[1]);
+    else if (argc == 2)
+    {
+        outputFile.assign(argv[1]);
+        linesLong = (int)argv[2];
+    }
     else
     {
         cout << "Ruta del archivo a segmentar: ";
@@ -35,7 +46,7 @@ int main(int argc, const char* argv[])
 
             sWriter.open(filename.c_str(), ios::out);
 
-            for (int j = 0; j < 90000; j++)
+            for (int j = 0; j < linesLong; j++)
             {
                 getline(sReader, line);
                 sWriter << line << endl;
