@@ -1,2 +1,2 @@
 # Segmentator
-## Segmentador de archivos grandes
+Segmentador de archivos grandes
